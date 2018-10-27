@@ -1,17 +1,25 @@
 ---
-  - hosts: ubuntu
+  - hosts: all
     become: yes
-    tasks:
+    tasks: 
+    ## Installing the  apache Packages and update in Ubuntu ##
       - name: update packges and install apache
         apt:
           name: apache2
           update_cache: yes
           state: present
-      - name: restart apache after installation
-        service:
-          name: apache2
-          enabled: yes
-          state: restarted
+        notify:
+        - restart apache
+        when: ansible_os_family == "Debian"
+    ## Installing the  httpd Packages and update in RedHat ##
+      - name: install apache2
+        yum:
+          name: httpd
+          state: present  
+        notify:
+        - restart httpd
+        when: ansible_os_family == "RedHat"
+    ## Installing the  php  Packages and update in ubuntu ##
       - name: Install php packages
         apt:
           name: "{{ item }}"
@@ -21,8 +29,31 @@
           - libapache2-mod-php
           - php-mcrypt
           - php-mysql
-      - name: restart apache after php
-        service:
-          name: apache2
-          enabled: yes
+        notify:
+        - restart apache
+        when: ansible_os_family == "Debian"
+    ## Installing the  php  Packages and update in redhat ##
+      - name: install php packages
+        yum:
+          name: "{{ items }}"
+          state: present
+        with_items:
+          - php 
+          - php-mysql
+        notify:
+        - restart httpd
+        when: ansible_os_family == "RedHat" 
+    ## Installing the  handlers in ubuntu ## 
+    handlers:
+    - name: restart apache
+      service:
+        name: apache2
+        enabled: yes
+        state: restarted
+      when: ansible_os_family == "Debian"
+    ## Installing the  handlers in ubuntu ## 
+    - name: restart httpd
+      service:
+          name: httpd
           state: restarted
+      when: ansible_os_family == "RedHat"
