@@ -18,7 +18,7 @@
           state: present
         with_items:
           - php
-          - libapache2- mod-php
+          - libapache2-mod-php
           - php-mcrypt
           - php-mysql
       - name: restart apache after php
