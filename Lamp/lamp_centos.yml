@@ -10,7 +10,7 @@
         service:
           name: httpd
           enabled: yes
-          state: yes
+          state: started
       - name: install php packages
         yum:
           name:
@@ -22,6 +22,6 @@
         service:
           name: httpd
           state: restarted
-          
+
 
 
