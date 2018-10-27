@@ -35,7 +35,7 @@
     ## Installing the  php  Packages and update in redhat ##
       - name: install php packages
         yum:
-          name: "{{ items }}"
+          name: "{{ item }}"
           state: present
         with_items:
           - php 
