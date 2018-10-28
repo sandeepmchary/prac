@@ -7,7 +7,7 @@
       name: "{{ pack_name }}"
       state: present
     notify:
-    - restart apache2
+    - restart apache
   - name: install php packages
     package:
       name: "{{ pack_name }}"
