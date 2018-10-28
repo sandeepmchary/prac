@@ -43,6 +43,11 @@
      notify:
       - restart httpd
      when: ansible_os_family == "RedHat"
+   - name: download webpage  
+     get_url:
+      url: https://raw.githubusercontent.com/sandeepmchary/prac/master/Lamp/info.php
+      dest: /var/www/html/info.php
+  
    handlers:
     - name : restart apache
       service:
