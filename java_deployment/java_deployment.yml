@@ -16,7 +16,6 @@
      package:
        name: "{{ pack_name }}"
        state: present
-       enabled: yes
   handlers:
     - name: restart tomcat 
       service:
