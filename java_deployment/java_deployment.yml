@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+   - name: update ubuntu
+     apt:
+       update_cache: yes
+       state: present
+     when: ansible_os_family == "Debian"
+   - name: upgrade all packages
+     yum:
+        name=* 
+        state=latest
+     when: ansible_os_family == "RedHat"
+   - name: tomcat install
+     package:
+       name: "{{ package }}"
+       state: present
+       enabled: yes
+  handlers:
+    - name: restart tomcat     
