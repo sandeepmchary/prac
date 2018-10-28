@@ -1,0 +1,7 @@
+[ubuntu]
+localhost pack_name=apache2
+
+[redhat]
+ip-172-31-20-84.us-west-2.compute.internal pack_name=httpd
+
+
