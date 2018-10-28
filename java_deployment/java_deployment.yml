@@ -14,11 +14,11 @@
      when: ansible_os_family == "RedHat"
    - name: tomcat install
      package:
-       name: "{{ pack_name }}"
+       name: tomcat7
        state: present
   handlers:
     - name: restart tomcat 
       service:
-        name: "{{ pack_name }}"
+        name: tomcat7
         state: restarted
 
