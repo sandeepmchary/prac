@@ -16,6 +16,7 @@
      package:
        name: tomcat
        state: present
+       enabled: yes
   handlers:
     - name: restart tomcat 
       service:
