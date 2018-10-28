@@ -1,7 +1,7 @@
 [ubuntu]
-localhost pack_name=apache2
+localhost
+ip-172-31-17-120.us-west-2.compute.internal
 
 [redhat]
-ip-172-31-20-84.us-west-2.compute.internal pack_name=httpd
-
-
+ip-172-31-20-84.us-west-2.compute.internal
+ip-172-31-30-136.us-west-2.compute.internal
