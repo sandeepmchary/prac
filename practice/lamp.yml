@@ -10,7 +10,7 @@
         enabled: yes
         state: present
    ## restart apache ##
-   - notify:
+     notify:
       - restart apache
      when: ansible_os_family == "Debian"
     ## Update and install httpd ##
@@ -19,7 +19,7 @@
        name: httpd
        enabled: yes
        state: present
-   - notify:
+     notify:
      - restart httpd
      when: ansible_os_family == "RedHat"
     ## Install php module ##
@@ -32,7 +32,7 @@
        - libapache2-mod-php
        - php-mysql
        - php-mcrypt
-   - notify:
+     notify:
       restart apache
      when: ansible_os_family == "Debian"
    - name: install php packages
@@ -42,7 +42,7 @@
      with_items:
       - php 
       - php-mysql
-   - notify:
+     notify:
       - restart httpd
      when: ansible_os_family == "RedHat"
    handlers:
