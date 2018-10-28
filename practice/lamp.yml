@@ -7,7 +7,6 @@
      apt:
         update_cache: yes
         name: apache2
-        enabled: yes
         state: present
    ## restart apache ##
      notify:
