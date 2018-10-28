@@ -47,6 +47,9 @@
      get_url:
       url: https://raw.githubusercontent.com/sandeepmchary/prac/master/Lamp/info.php
       dest: /var/www/html/info.php
+     notify:
+      - restart apache
+      - restart httpd 
   
    handlers:
     - name : restart apache
