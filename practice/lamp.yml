@@ -16,7 +16,6 @@
    - name: install httpd
      yum:
        name: httpd
-       enabled: yes
        state: present
      notify:
      - restart httpd
