@@ -1,0 +1,27 @@
+---
+  - hosts: redhat
+    become: yes
+    tasks:
+      - name: install apache2
+        yum:
+          name: httpd
+          state: present
+      - name: start httpd
+        service:
+          name: httpd
+          enabled: yes
+          state: started
+      - name: install php packages
+        yum:
+          name: "{{ items }}"
+          state: present
+        with_items:
+          - php 
+          - php-mysql
+      - name: restart httpd
+        service:
+          name: httpd
+          state: restarted
+
+
+
